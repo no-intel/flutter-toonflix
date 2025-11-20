@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toonflix/widgets/button.dart';
+import 'package:toonflix/widgets/currency_card.dart';
 
 void main() {
   runApp(App());
@@ -98,66 +99,11 @@ class App extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 20),
-              Container(
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                  color: Color(0xFF1F2123),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(25),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Euro',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 28,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Row(
-                            children: [
-                              Text(
-                                '6 428',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              SizedBox(width: 5),
-                              Text(
-                                'EUR',
-                                style: TextStyle(
-                                  color: Colors.white.withAlpha(200),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Transform.scale(
-                        scale: 2,
-                        child: Transform.translate(
-                          offset: Offset(-3, 12),
-                          child: Icon(
-                            Icons.euro_rounded,
-                            color: Colors.white,
-                            size: 78,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              CurrencyCard(
+                name: 'Euro',
+                amount: '6 428',
+                code: 'EUR',
+                icon: Icons.euro_rounded,
               ),
             ],
           ),
