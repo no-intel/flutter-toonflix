@@ -17,7 +17,7 @@ class App extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 50),
+              SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -104,6 +104,21 @@ class App extends StatelessWidget {
                 amount: '6 428',
                 code: 'EUR',
                 icon: Icons.euro_rounded,
+                isInverted: false,
+              ),
+              CurrencyCard(
+                name: 'Bitcoin',
+                amount: '9 785',
+                code: 'BTC',
+                icon: Icons.currency_bitcoin_rounded,
+                isInverted: true,
+              ),
+              CurrencyCard(
+                name: 'Dollar',
+                amount: '428',
+                code: 'USD',
+                icon: Icons.attach_money_outlined,
+                isInverted: false,
               ),
             ],
           ),
