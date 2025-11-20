@@ -11,36 +11,41 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Color(0xFF181818),
-        body: Column(
-          children: [
-            SizedBox(
-              height: 80,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text("Hey, Selena",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w600
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 40,
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 80,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text("Hey, Selena",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 28,
+                            fontWeight: FontWeight.w600
+                        ),
                       ),
-                    ),
-                    Text("Welcom back",
-                      style: TextStyle(
-                        color: Colors.white.withAlpha(127),
-                        fontSize: 18,
+                      Text("Welcom back",
+                        style: TextStyle(
+                          color: Colors.white.withAlpha(127),
+                          fontSize: 18,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Column(),
-              ],
-            )
-          ],
+                    ],
+                  ),
+                  Column(),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
