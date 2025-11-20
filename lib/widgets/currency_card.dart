@@ -46,7 +46,7 @@ class CurrencyCard extends StatelessWidget {
                     Text(
                       amount,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: isInverted ? blackColor : Colors.white,
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                       ),
