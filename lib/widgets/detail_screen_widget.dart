@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/models/webtoon_episode_model.dart';
+import 'package:toonflix/services/api_service.dart';
 
-class DetailScreenWidget extends StatelessWidget {
+import '../models/webtoon_detail_model.dart';
+
+class DetailScreenWidget extends StatefulWidget {
   final String title, thumb, id;
 
   const DetailScreenWidget({
@@ -9,6 +13,21 @@ class DetailScreenWidget extends StatelessWidget {
     required this.thumb,
     required this.id,
   });
+
+  @override
+  State<DetailScreenWidget> createState() => _DetailScreenWidgetState();
+}
+
+class _DetailScreenWidgetState extends State<DetailScreenWidget> {
+  late Future<WebtoonDetailModel> webtoon;
+  late Future<List<WebtoonEpisodeModel>> episodes;
+
+  @override
+  void initState() {
+    super.initState();
+    webtoon = ApiService.getToonById(widget.id);
+    episodes = ApiService.getLatestEpisodesById(widget.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +43,7 @@ class DetailScreenWidget extends StatelessWidget {
           title: Padding(
             padding: EdgeInsets.only(top: 30),
             child: Text(
-              title,
+              widget.title,
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 30),
             ),
           ),
@@ -37,7 +56,7 @@ class DetailScreenWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Hero(
-                tag: id,
+                tag: widget.id,
                 child: Container(
                   width: 250,
                   decoration: BoxDecoration(
@@ -52,7 +71,7 @@ class DetailScreenWidget extends StatelessWidget {
                   ),
                   clipBehavior: Clip.hardEdge,
                   child: Image.network(
-                    thumb,
+                    widget.thumb,
                     headers: {
                       "User-Agent":
                           "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
@@ -61,6 +80,32 @@ class DetailScreenWidget extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          SizedBox(height: 30),
+          FutureBuilder(
+            future: webtoon,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 70),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        snapshot.data!.about,
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        '${snapshot.data!.genre} / ${snapshot.data!.age}',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                );
+              }
+              return Text("....");
+            },
           ),
         ],
       ),
