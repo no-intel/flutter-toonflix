@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'currency_text.dart';
+
 class CurrencyCard extends StatelessWidget {
   final String name, code, amount;
   final IconData icon;
@@ -36,34 +38,28 @@ class CurrencyCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    name,
-                    style: TextStyle(
-                      color: isInverted ? blackColor : Colors.white,
-                      fontSize: 28,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  CurrencyText(
+                    text: name,
+                    textColor: isInverted ? blackColor : Colors.white,
+                    fontSize: 28,
+                    fontWeight: FontWeight.w600,
                   ),
                   SizedBox(height: 5),
                   Row(
                     children: [
-                      Text(
-                        amount,
-                        style: TextStyle(
-                          color: isInverted ? blackColor : Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      CurrencyText(
+                        text: amount,
+                        textColor: isInverted ? blackColor : Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
                       ),
                       SizedBox(width: 5),
-                      Text(
-                        code,
-                        style: TextStyle(
-                          color: (isInverted ? blackColor : Colors.white)
-                              .withAlpha(200),
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      CurrencyText(
+                        text: code,
+                        textColor: (isInverted ? blackColor : Colors.white)
+                            .withAlpha(200),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
                       ),
                     ],
                   ),
