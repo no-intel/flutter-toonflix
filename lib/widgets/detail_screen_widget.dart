@@ -22,6 +22,7 @@ class DetailScreenWidget extends StatefulWidget {
 class _DetailScreenWidgetState extends State<DetailScreenWidget> {
   late Future<WebtoonDetailModel> webtoon;
   late Future<List<WebtoonEpisodeModel>> episodes;
+  bool isLiked = false;
 
   @override
   void initState() {
@@ -41,6 +42,14 @@ class _DetailScreenWidgetState extends State<DetailScreenWidget> {
           elevation: 10,
           backgroundColor: Colors.white,
           foregroundColor: Colors.green,
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: isLiked
+                  ? Icon(Icons.favorite)
+                  : Icon(Icons.favorite_outline),
+            ),
+          ],
           title: Padding(
             padding: EdgeInsets.only(top: 30),
             child: Text(
